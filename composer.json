@@ -1,0 +1,32 @@
+{
+  "name": "mediakreasi/api",
+  "type": "library",
+  "description": "A simple API connector",
+  "keywords": [
+    "laravel",
+    "mediakreasi",
+    "api"
+  ],
+  "homepage": "http://mediakreasi.id",
+  "support": {
+    "issues": "https://github.com/mediakreasi/api/issues",
+    "source": "https://github.com/mediakreasi/api"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Edo Aria",
+      "email": "edo@mediakreasi.id",
+      "homepage": "http://mediakreasi.id"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "guzzlehttp/guzzle": "~6.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mediakreasi\\Api": "src/"
+    }
+  }
+}
