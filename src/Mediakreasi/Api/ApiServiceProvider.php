@@ -4,26 +4,35 @@ use Illuminate\Support\ServiceProvider;
 
 class ApiServiceProvider extends ServiceProvider
 {
+    protected $defer = true;
+    
     /**
-     * Indicates if loading of the provider is deferred.
-     * @var bool
+     * Bootstrap the application services.
+     *
+     * @return void
      */
-    protected $defer = false;
-
     public function boot()
     {
-        
-    }
-
-    public function register()
-    {
-        $this->app->singleton('api', function ($api) {
-            return new Api($api['url']);
+        $app = $this->app;
+           
+        $this->app->singleton('api', function ($app) {
+            return new Api();
         });
     }
 
-    public function provides()
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
     {
-        return ['api'];
+        $app = $this->app;
+        
+        $app['api'] = $app->share(function ($app) {
+            return new Api();
+        });
+
+        $app->alias('api', 'Mediakreasi\Api');
     }
 }
