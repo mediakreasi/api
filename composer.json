@@ -27,7 +27,7 @@
   },
   "autoload": {
     "psr-0": {
-      "Mediakreasi\\Api\\": "src/"
+      "Mediakreasi\\Api\\": "src/Mediakreasi/Api"
     }
   },
   "minimum-stability": "dev"
