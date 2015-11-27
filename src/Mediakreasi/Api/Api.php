@@ -6,12 +6,12 @@ use Mediakreasi\Api\library\Connection;
 
 class Api
 {
-	private $params;
-	private $uri;
-	private $result;
+	protected $params;
+	protected $url;
+	protected $result;
 	 
-	public function __construct() {
-		$this->uri = Config::get('host');
+	public function __construct($url) {
+		$this->$url = $url;
 		$this->params = [];
     }
 	

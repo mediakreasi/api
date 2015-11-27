@@ -12,21 +12,18 @@ class ApiServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->publishes([
-            __DIR__ . '/../../config/config.php' => config_path('mki-api.php'),
-        ], 'config');
+        
     }
 
     public function register()
     {
-        $this->app['api'] = $this->app->share (function ($app) 
-        {
-            return new Api();
+        $this->app->singleton('api', function ($api) {
+            return new Api($api['url']);
         });
     }
 
     public function provides()
     {
-        return [];
+        return ['api'];
     }
 }
