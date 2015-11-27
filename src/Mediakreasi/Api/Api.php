@@ -6,20 +6,18 @@ use Mediakreasi\Api\library\Connection;
 
 class Api
 {
-	protected $params;
-	protected $uri;
-	protected $result;
+	private $params;
+	private $uri;
+	private $result;
 	 
 	public function __construct() {
-        $this->config = $config;
 		$this->uri = Config::get('host');
+		$this->params = [];
     }
 	
 	public static function get($uri = null) {
-		$url = $this->uri;
-		
-		if (count($this->query) > 0)
-        	$url .= '?' . http_build_query($this->params);
+		if (count($this->params) > 0)
+        	$url = $uri . '?' . http_build_query($this->params);
 			
 		// clean up
         $this->params = null;
@@ -39,7 +37,7 @@ class Api
 		}
 	}
 	
-	public static function __get($name) {
+	public function __get($name) {
 		if ($name == 'all') {
 
 			return $this->result;
@@ -58,7 +56,7 @@ class Api
 		}
 	}
 	
-	public static function __set($name, $value) {
+	public function __set($name, $value) {
 		if ($value !== null)
             $this->params[$name] = $value;
 
