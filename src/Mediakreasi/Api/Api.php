@@ -1,7 +1,5 @@
 <?php namespace Mediakreasi\Api; 
 
-use \Config;
-
 use Mediakreasi\Api\library\Connection;
 
 class Api
@@ -10,8 +8,7 @@ class Api
 	protected $url;
 	protected $result;
 	 
-	public function __construct($url) {
-		$this->$url = $url;
+	public function __construct() {
 		$this->params = [];
     }
 	
